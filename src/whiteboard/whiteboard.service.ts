@@ -223,18 +223,12 @@ export class PmWhiteboardService {
       serverUrl: new URL(
         window.location.hostname.indexOf('dih.bosc.lv') == -1
           ? 'https://local.polirural-mb.lv/map-whiteboard/'
-          : 'https://dih.bosc.lv/modeller/map-whiteboard/'
+          : 'https://dih.bosc.lv/map-whiteboard-demo/map-whiteboard/'
       ),
       credentials: {
         provider: '',
         username: credentials.email,
         password: '',
-        options: {
-          url:
-            window.location.hostname.indexOf('dih.bosc.lv') == -1
-              ? 'https://local.polirural-mb.lv/admin/api/'
-              : 'https://dih.bosc.lv/modeller/admin/api/',
-        },
       },
       manipulation: new manipulators(this.HsSaveMapService),
     });

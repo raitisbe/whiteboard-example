@@ -20,9 +20,6 @@
         "dom"
       ],
       "paths": {
-        "polirural-semex-viewer": [
-          "../"
-        ]
       }
     },
     "angularCompilerOptions": {
