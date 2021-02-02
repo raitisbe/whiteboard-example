@@ -1,0 +1,56 @@
+version: '2.1'
+
+services:
+    whiteboard-demo-ui:
+        container_name: whiteboard-demo-ui
+        build:
+            context: .
+            dockerfile: docker-conf/ui/Dockerfile
+        image: whiteboard-demo-ui:latest
+        env_file:
+            - .env
+        command: >
+            http-server ./ -p 8980
+        depends_on: 
+            - whiteboard-demo-proxy
+   
+    whiteboard-demo-server:
+        container_name: whiteboard-demo-server
+        build:
+            context: .
+            dockerfile: docker-conf/whiteboard-server/Dockerfile
+        image: whiteboard-demo-server:latest
+        env_file:
+            - .env
+        environment:
+            - DB_SERVER=whiteboard-demo-db
+        links:
+            - whiteboard-demo-db
+        volumes:
+            - "./whiteboard-images:/srv/map-whiteboard-server/public/images/"
+    whiteboard-demo-db:
+        container_name: whiteboard-demo-db
+        build:
+            context: .
+            dockerfile: docker-conf/map-whiteboard-db/Dockerfile
+        image: whiteboard-demo-db:latest
+        volumes:
+            - "whiteboard-demo-mongodb:/data/db"
+        env_file:
+            - .env
+    whiteboard-demo-nginx:
+        container_name: whiteboard-demo-nginx
+        build:
+            context: .
+            dockerfile: docker-conf/nginx/Dockerfile
+        image: whiteboard-demo-nginx:latest
+        ports:
+            - "25348:24348"
+        env_file:
+            - .env
+        depends_on: 
+            - whiteboard-demo-ui
+            - whiteboard-demo-server
+
+volumes:
+    whiteboard-demo-mongodb:

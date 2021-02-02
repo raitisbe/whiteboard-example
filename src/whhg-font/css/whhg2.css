@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'WebHostingHub-Glyphs2';
+    src: url(../font/subset2.eot);
+    src: url(../font/subset2.eot?#iefix) format('embedded-opentype'),
+         url(../font/subset2.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    -moz-font-feature-settings: "calt=0,liga=0";
+}
+[class^="icon2-"], [class*=" icon2-"] {font-family:'WebHostingHub-Glyphs2';background:none;width:auto;height:auto;font-style:normal}
+.icon2-opennewwindow:before{content:'\f332'}
+.icon2-fullstar:before{content:'\f2e0'}
+.icon2-maximize:before{content:'\f30f'}
+
+

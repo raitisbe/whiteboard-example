@@ -1,0 +1,117 @@
+{
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "extends": [
+      "openlayers",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:angular/johnpapa",
+      "plugin:jsdoc/recommended"
+    ],
+    "plugins": ["@typescript-eslint",
+      "sort-class-members"],
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly",
+      "define": "readonly",
+      "angular": "readonly",
+      "stmPath": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 2018
+    },
+    "rules": {
+      "brace-style": "warn",
+      "no-console": "warn",
+      "object-curly-spacing": "warn",
+      "prefer-arrow-callback": "warn",
+      "no-multi-assign": "warn",
+      "space-before-function-paren": "off",
+      "import/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          "js": "never",
+          "ts": "never"
+        }
+      ],
+      "angular/di": [
+        "error",
+        "function"
+      ],
+      "angular/file-name": [
+        "warn",
+        {
+          "typeSeparator": "dot",
+          "ignoreTypeSuffix": true,
+          "nameStyle": "dash",
+          "ignorePrefix": "hs."
+        }
+      ],
+      "angular/definedundefined": "off",
+      "angular/typecheck-array": "off",
+      "angular/typecheck-date": "off",
+      "angular/typecheck-function": "off",
+      "angular/typecheck-number": "off",
+      "angular/typecheck-object": "off",
+      "angular/typecheck-string": "off",
+      "angular/document-service": "off",
+      "angular/interval-service": "off",
+      "angular/timeout-service": "off",
+      "angular/window-service": "off",
+      "angular/prefer-component": "warn",
+      "angular/no-controller": "error",
+      "angular/no-service-method": "off",
+      "@typescript-eslint/no-empty-function": ["error", { "allow": ["constructors"] }],
+      "valid-jsdoc": "off",
+      "sort-class-members/sort-class-members": [2, {
+        "order": [
+          "[static-properties]",
+          "[static-methods]",
+          "[properties-alphabetical]",
+          "[conventional-private-properties]",
+          "constructor",
+          "[methods-alphabetical]",
+          "[async-methods-alphabetical]",
+          "[conventional-private-methods]"
+        ],
+        "groups": {
+          "methods-alphabetical": [{ "sort": "alphabetical", "type": "method" }],
+          "properties-alphabetical": [{ "sort": "alphabetical", "type": "property" }],
+          "async-methods-alphabetical": [{ "sort": "alphabetical", "type": "method", "async": "true" }]
+        },
+        "accessorPairPositioning": "getThenSet",
+        "stopAfterFirstProblem": true
+      }]
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.spec.js"
+        ],
+        "env": {
+          "jasmine": true,
+          "angular/mocks": true
+        }
+      },
+      {
+        "files": [
+          "**/webpack.*.js"
+        ],
+        "rules": {
+          "@typescript-eslint/no-var-requires": "off"
+        }
+      }
+    ],
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".ts"]
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,33 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+      "baseUrl": "./",
+      "outDir": "./dist/out-tsc",
+      "sourceMap": true,
+      "declaration": false,
+      "downlevelIteration": true,
+      "experimentalDecorators": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "importHelpers": true,
+      "preserveSymlinks": true,
+      "resolveJsonModule": true,
+      "target": "es2015",
+      "lib": [
+        "es2018",
+        "es2019.Array",
+        "dom"
+      ],
+      "paths": {
+        "polirural-semex-viewer": [
+          "../"
+        ]
+      }
+    },
+    "angularCompilerOptions": {
+      "enableResourceInlining": true,
+      "fullTemplateTypeCheck": true,
+      "strictInjectionParameters": true
+    }
+  }
