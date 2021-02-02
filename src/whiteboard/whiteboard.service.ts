@@ -1,6 +1,7 @@
 import BaseLayer from 'ol/layer/Base';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
+import {AppService} from '../app.service';
 import {
   HsCompositionsParserService,
   HsDrawService,
@@ -14,7 +15,6 @@ import {Injectable} from '@angular/core';
 import {MapWhiteboard} from 'map-whiteboard-lib';
 import {PmToastService} from '../toast/toast.service';
 import {mapWhiteboard} from 'map-whiteboard-lib/src/types';
-import {AppService} from '../app.service';
 
 export type Credentials = {
   email: string;
@@ -39,7 +39,7 @@ export class PmWhiteboardService {
   ) {
     this.AppService.connected.subscribe(({mapComposition, email}) => {
       this.init({mapComposition, email});
-    })
+    });
   }
   /**
    * @ngdoc method
@@ -76,30 +76,38 @@ export class PmWhiteboardService {
     await this.whiteboard.grantAccessRights(userId, right);
   }
   /**
+   * @param root0
+   * @param root0.mapComposition
+   * @param root0.email
    * @ngdoc method
    * @name PmWhiteboardService#init
    * @public
    * @description Calls initial functions to communicate with map-whiteboard application
    */
   async init({mapComposition, email}): Promise<void> {
-    await this.setupServer({
-      email: email,
-      password: '',
-    });
-    await this.whiteboard.waitAuth();
-      this.whiteboard.getMapCompositions();
-      this.HsMapService.map.getLayers().on('add', (e) => {
-        //This is needed so the layer is removed when map is reset
-        //TODO: Implement this also in whiteboard-lib but with collection rather then key-value pair on layer object
-        e.element.set('from_composition', true);
+    if (this.whiteboard) {
+      this.whiteboard.deactivate();
+    } else {
+      await this.setupServer({
+        email: email,
+        password: '',
       });
-      if (mapComposition == undefined || mapComposition == '') {
-        await this.publishComposition();
-      } else {
-        await this.loadCompositionForTree(mapComposition);
-      }
-      this.watchDrawingLayerChanges();
-      this.watchForLayerChanges();
+    }
+    this.whiteboard.authenticate({username: email, password: '', provider: ''});
+    await this.whiteboard.waitAuth();
+    this.whiteboard.getMapCompositions();
+    this.HsMapService.map.getLayers().on('add', (e) => {
+      //This is needed so the layer is removed when map is reset
+      //TODO: Implement this also in whiteboard-lib but with collection rather then key-value pair on layer object
+      e.element.set('from_composition', true);
+    });
+    if (mapComposition == undefined || mapComposition == '') {
+      await this.publishComposition();
+    } else {
+      await this.loadCompositionForTree(mapComposition);
+    }
+    this.watchDrawingLayerChanges();
+    this.watchForLayerChanges();
   }
   /**
    * @ngdoc method
@@ -141,6 +149,7 @@ export class PmWhiteboardService {
   }
   /**
    * @param tree Selected tree
+   * @param compositionId
    * @ngdoc method
    * @name PmWhiteboardService#loadCompositionForTree
    * @private
