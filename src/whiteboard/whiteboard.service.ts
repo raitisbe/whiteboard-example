@@ -215,9 +215,15 @@ export class PmWhiteboardService {
    */
   async setupServer(credentials: Credentials): Promise<any> {
     class manipulators {
+      HsCompositionsParserService: HsCompositionsParserService;
       HsSaveMapService: HsSaveMapService;
-      constructor(HsSaveMapService) {
+
+      constructor(HsSaveMapService, HsCompositionsParserService) {
         this.HsSaveMapService = HsSaveMapService;
+        this.HsCompositionsParserService = HsCompositionsParserService;
+      }
+      deserializeLayer(layerDef: any) {
+        return this.HsCompositionsParserService.jsonToLayer(layerDef);
       }
       serializeLayer(layer) {
         return this.HsSaveMapService.layer2json(layer);
@@ -239,7 +245,10 @@ export class PmWhiteboardService {
         username: credentials.email,
         password: '',
       },
-      manipulation: new manipulators(this.HsSaveMapService),
+      manipulation: new manipulators(
+        this.HsSaveMapService,
+        this.HsCompositionsParserService
+      ),
     });
     this.whiteboard.scratchLayer.set('title', 'Scratch layer');
     this.whiteboard.cursorLayer.set('title', 'Cursor layer');
@@ -269,9 +278,17 @@ export class PmWhiteboardService {
 
     this.HsDrawService.drawingLayerChanges.subscribe(
       (current: {layer: BaseLayer; source: VectorSource}) => {
-        setTimeout(() => {
-          this.setEditLayer(current.layer);
-        }, 0);
+        if (current.layer.get('metadata') == undefined) {
+          this.whiteboard.onLayerPublished.subscribe(({layer}) => {
+            if (layer == current.layer) {
+              this.whiteboard.activate(<VectorLayer>layer);
+            }
+          });
+        } else {
+          setTimeout(() => {
+            this.setEditLayer(current.layer);
+          }, 0);
+        }
       }
     );
 
