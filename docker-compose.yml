@@ -52,5 +52,17 @@ services:
             - whiteboard-demo-ui
             - whiteboard-demo-server
 
+    whiteboard-demo-proxy:
+        container_name: whiteboard-demo-proxy
+        build:
+            context: .
+            dockerfile: docker-conf/proxy/Dockerfile
+        image: whiteboard-demo-proxy:latest
+        environment:
+            NODE_ENV: development
+            PROXY_PORT: 8085
+        command: >
+            node ./proxy.js
+
 volumes:
     whiteboard-demo-mongodb:
