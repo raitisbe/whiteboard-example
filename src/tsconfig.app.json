@@ -2,19 +2,6 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
       "outDir": "./out-tsc/app",
-      "paths": {
-        "hslayers-ng": ["../node_modules/hslayers-ng/src/public-api.ts"],
-        "map-whiteboard-lib": ["../node_modules/map-whiteboard-lib/dist/"],
-        "ol/*": ["../node_modules/ol/*"],     
-        "@angular/*": [ "../node_modules/@angular/*" ],     
-        "stream": [
-          "../node_modules/stream-browserify"
-        ],
-        "string_decoder": [
-          "../node_modules/stream-browserify/node_modules/string_decoder"
-        ],
-        "@ngx-translate/*": ["../node_modules/@ngx-translate/*"]
-      }
     },
     "files": [
       "main.ts",

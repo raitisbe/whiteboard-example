@@ -14,7 +14,7 @@ import {
 import {Injectable} from '@angular/core';
 import {MapWhiteboard} from 'map-whiteboard-lib';
 import {PmToastService} from '../toast/toast.service';
-import {mapWhiteboard} from 'map-whiteboard-lib/src/types';
+import {mapWhiteboard} from 'map-whiteboard-lib';
 
 export type Credentials = {
   email: string;
