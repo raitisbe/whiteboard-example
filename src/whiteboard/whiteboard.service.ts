@@ -238,7 +238,7 @@ export class PmWhiteboardService {
       serverUrl: new URL(
         window.location.hostname.indexOf('dih.bosc.lv') == -1
           ? 'https://whiteboard-demo.lv/map-whiteboard/'
-          : 'https://dih.bosc.lv/map-whiteboard-demo/map-whiteboard/'
+          : 'https://dih.bosc.lv/whiteboard-demo/map-whiteboard/'
       ),
       credentials: {
         provider: '',
