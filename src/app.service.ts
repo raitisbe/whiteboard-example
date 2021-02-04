@@ -11,10 +11,10 @@ import {Subject} from 'rxjs';
 })
 export class AppService {
   apiUrl = '../admin/api';
-  
-  imagePathUrl = 'assets/images';
-  public connected = new Subject();
+
   compositionId: string;
+  public connected = new Subject();
+  imagePathUrl = 'assets/images';
 
   constructor(public HsCoreService: HsCoreService, public HsConfig: HsConfig) {}
   getHostname(): string {
@@ -28,6 +28,7 @@ export class AppService {
   }
   init(): void {
     this.HsConfig.update({
+      saveMapStateOnReload: false,
       assetsPath: 'assets/hslayers-ng',
       proxyPrefix: '../proxy/',
       status_manager_url: '/wwwlibs/statusmanager2/index.php',
@@ -42,7 +43,7 @@ export class AppService {
           base: true,
           editor: {editable: false},
           removable: false,
-        })
+        }),
       ],
       project_name: 'erra/map',
       default_view: new View({
