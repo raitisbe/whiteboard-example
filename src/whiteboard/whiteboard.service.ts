@@ -279,16 +279,14 @@ export class PmWhiteboardService {
     this.HsDrawService.drawingLayerChanges.subscribe(
       (current: {layer: BaseLayer; source: VectorSource}) => {
         if (current.layer.get('metadata') != undefined) {
-          setTimeout(() => {
-            this.setEditLayer(current.layer);
-          }, 0);
+          this.setEditLayer(current.layer);
         }
       }
     );
 
     this.whiteboard.onLayerPublished.subscribe(({layer}) => {
       if (this.HsDrawService.selectedLayer == layer) {
-        this.whiteboard.setEditLayer(<VectorLayer>layer);
+        this.setEditLayer(<VectorLayer>layer);
       }
     });
 
