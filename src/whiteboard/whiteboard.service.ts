@@ -40,7 +40,6 @@ export class PmWhiteboardService {
     this.AppService.connected.subscribe(({mapComposition, email}) => {
       this.init({mapComposition, email});
     });
-    this.watchDrawingLayerChanges();
     this.watchForLayerChanges();
   }
   /**
@@ -94,6 +93,7 @@ export class PmWhiteboardService {
         email: email,
         password: '',
       });
+      this.watchDrawingLayerChanges();
     }
     this.whiteboard.authenticate({username: email, password: '', provider: ''});
     await this.whiteboard.waitAuth();
