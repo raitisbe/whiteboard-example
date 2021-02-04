@@ -40,6 +40,8 @@ export class PmWhiteboardService {
     this.AppService.connected.subscribe(({mapComposition, email}) => {
       this.init({mapComposition, email});
     });
+    this.watchDrawingLayerChanges();
+    this.watchForLayerChanges();
   }
   /**
    * @ngdoc method
@@ -106,8 +108,6 @@ export class PmWhiteboardService {
     } else {
       await this.loadCompositionForTree(mapComposition);
     }
-    this.watchDrawingLayerChanges();
-    this.watchForLayerChanges();
   }
   /**
    * @ngdoc method
@@ -278,19 +278,19 @@ export class PmWhiteboardService {
 
     this.HsDrawService.drawingLayerChanges.subscribe(
       (current: {layer: BaseLayer; source: VectorSource}) => {
-        if (current.layer.get('metadata') == undefined) {
-          this.whiteboard.onLayerPublished.subscribe(({layer}) => {
-            if (layer == current.layer) {
-              this.whiteboard.activate(<VectorLayer>layer);
-            }
-          });
-        } else {
+        if (current.layer.get('metadata') != undefined) {
           setTimeout(() => {
             this.setEditLayer(current.layer);
           }, 0);
         }
       }
     );
+
+    this.whiteboard.onLayerPublished.subscribe(({layer}) => {
+      if (this.HsDrawService.selectedLayer == layer) {
+        this.whiteboard.setEditLayer(<VectorLayer>layer);
+      }
+    });
 
     this.HsEventBusService.vectorQueryFeatureSelection.subscribe(
       ({feature, selector}) => {
