@@ -39,3 +39,5 @@ docker-compose.png
 .env
 .vscode
 whiteboard-images
+whiteboard-server-docs/openapi.json
+whiteboard-server-docs/swagger.yml

@@ -3,10 +3,10 @@
 
 FROM node:10.16-alpine
 RUN apk add --no-cache git
-ADD https://gitlab.com/avinet2/map-whiteboard-server/-/archive/raitis-branch-7/map-whiteboard-server-raitis-branch-7.tar.gz /srv/
+ADD https://gitlab.com/avinet2/map-whiteboard-server/-/archive/swagger-1/map-whiteboard-server-swagger-1.tar.gz /srv/
 WORKDIR /srv/
-RUN tar xvzf map-whiteboard-server-raitis-branch-7.tar.gz
-RUN mv /srv/map-whiteboard-server-raitis-branch-7 /srv/map-whiteboard-server
+RUN tar xvzf map-whiteboard-server-swagger-1.tar.gz
+RUN mv /srv/map-whiteboard-server-swagger-1 /srv/map-whiteboard-server
 WORKDIR /srv/map-whiteboard-server
 RUN mkdir npm 
 RUN npm i
