@@ -31,6 +31,7 @@
     "core-js": "^3.7.0",
     "cors-anywhere": "^0.4.1",
     "deepmerge": "^4.2.2",
+    "geojson": "^0.5.0",
     "hslayers-ng": "^3.0.1-rc.0",
     "http-server": "^0.12.3",
     "map-whiteboard-lib": "git+https://gitlab.com/avinet2/map-whiteboard-lib.git#raitis-branch",
