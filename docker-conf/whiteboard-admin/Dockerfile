@@ -14,3 +14,4 @@ WORKDIR /srv/
 RUN git clone git@gitlab.com:Dailis_LAN/whiteboard-admin.git
 WORKDIR /srv/whiteboard-admin
 RUN npm i
+RUN ng build --prod
