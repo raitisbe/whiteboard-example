@@ -28,6 +28,18 @@ services:
             - whiteboard-demo-db
         volumes:
             - "./whiteboard-images:/srv/map-whiteboard-server/public/images/"
+
+    whiteboard-demo-admin:
+        container_name: whiteboard-demo-admin
+        build:
+            context: .
+            dockerfile: docker-conf/whiteboard-admin/Dockerfile
+        image: whiteboard-demo-admin:latest
+        env_file:
+            - .env
+        command: >
+            node_modules/.bin/ng serve
+
     whiteboard-demo-db:
         container_name: whiteboard-demo-db
         build:
@@ -51,6 +63,7 @@ services:
         depends_on: 
             - whiteboard-demo-ui
             - whiteboard-demo-server
+            - whiteboard-demo-admin
             - whiteboard-demo-swagger
 
     whiteboard-demo-proxy:

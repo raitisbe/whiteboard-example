@@ -41,3 +41,4 @@ docker-compose.png
 whiteboard-images
 whiteboard-server-docs/openapi.json
 whiteboard-server-docs/swagger.yml
+secret
