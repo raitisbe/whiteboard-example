@@ -38,7 +38,7 @@ services:
         env_file:
             - .env
         command: >
-            node_modules/.bin/ng serve
+            node_modules/.bin/ng serve --host 0.0.0.0
 
     whiteboard-demo-db:
         container_name: whiteboard-demo-db
