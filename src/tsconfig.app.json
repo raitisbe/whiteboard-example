@@ -10,7 +10,7 @@
     "include": [
       "./**/*.d.ts",
       "../node_modules/hslayers-ng/src/**/*.ts",
-      "../node_modules/map-whiteboard-lib/dist/**/*.ts"
+      "../node_modules/map-whiteboard-lib/src/**/*.ts"
     ],
     "exclude": [
       "../node_modules/hslayers-ng/src/**/*.spec.ts",

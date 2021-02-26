@@ -21,7 +21,7 @@
       ],
       "paths": {
         "hslayers-ng": ["../node_modules/hslayers-ng/src/public-api.ts"],
-        "map-whiteboard-lib": ["../node_modules/map-whiteboard-lib/dist/index.js"],
+        "map-whiteboard-lib": ["../node_modules/map-whiteboard-lib/src/index.ts"],
         "ol/*": ["../node_modules/ol/*"],     
         "@angular/*": [ "../node_modules/@angular/*" ],     
         "stream": [

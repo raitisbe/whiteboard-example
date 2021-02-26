@@ -12,9 +12,8 @@ import {
   HsStylerService,
 } from 'hslayers-ng';
 import {Injectable} from '@angular/core';
-import {MapWhiteboard} from 'map-whiteboard-lib';
+import {MapWhiteboard, SyncResult} from 'map-whiteboard-lib';
 import {PmToastService} from '../toast/toast.service';
-import {mapWhiteboard} from 'map-whiteboard-lib';
 
 export type Credentials = {
   email: string;
@@ -252,7 +251,7 @@ export class PmWhiteboardService {
     });
     this.whiteboard.scratchLayer.set('title', 'Scratch layer');
     this.whiteboard.cursorLayer.set('title', 'Cursor layer');
-    this.whiteboard.onSync().subscribe((result: mapWhiteboard.SyncResult) => {
+    this.whiteboard.onSync().subscribe((result: SyncResult) => {
       if (result?.error && result.layer.name != 'cursor') {
         console.error(
           'Some error occurred',
