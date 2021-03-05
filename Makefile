@@ -17,4 +17,4 @@ deploy-swagger:
 	docker-compose stop whiteboard-demo-swagger && docker-compose build whiteboard-demo-swagger && docker-compose up -d whiteboard-demo-swagger
 
 deploy-admin:
-	docker-compose stop whiteboard-demo-admin && docker-compose build whiteboard-demo-admin && docker-compose up -d whiteboard-demo-admin
+	docker-compose stop whiteboard-demo-admin && docker-compose build --no-cache whiteboard-demo-admin && docker-compose up -d whiteboard-demo-admin
