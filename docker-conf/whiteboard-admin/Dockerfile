@@ -1,7 +1,7 @@
 # Copyright (c) BOSC
 # Distributed under the terms of the Comercial License.
 
-FROM node:10.16-alpine
+FROM node:14.16-alpine
 #RUN apk add --no-cache git openssh
 #RUN mkdir ~/.ssh/
 #RUN echo -e "Host gitlab.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config

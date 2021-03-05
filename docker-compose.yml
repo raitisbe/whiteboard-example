@@ -38,7 +38,7 @@ services:
         env_file:
             - .env
         command: >
-            node_modules/.bin/http-server ./dist/whiteboard-admin -p 4200
+            http-server ./dist/whiteboard-admin -p 4200
 
     whiteboard-demo-db:
         container_name: whiteboard-demo-db
