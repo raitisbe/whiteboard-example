@@ -28,4 +28,4 @@ WORKDIR /srv/whiteboard-admin
 RUN npm i http-server -g
 
 #RUN node_modules/.bin/ng build --prod --base-href ./admin/
-COPY dist/whiteboard-admin /srv/whiteboard-admin/dist/whiteboard-admin
+COPY whiteboard-admin-dist/whiteboard-admin /srv/whiteboard-admin

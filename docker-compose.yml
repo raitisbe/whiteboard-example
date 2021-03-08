@@ -38,7 +38,7 @@ services:
         env_file:
             - .env
         command: >
-            http-server ./dist/whiteboard-admin -p 4200
+            http-server ./ -p 4200
 
     whiteboard-demo-db:
         container_name: whiteboard-demo-db
