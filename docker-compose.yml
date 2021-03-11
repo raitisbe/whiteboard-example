@@ -86,6 +86,6 @@ services:
         environment:
             SWAGGER_JSON: /spec/openapi.json
         volumes:
-        - "./whiteboard-server-docs:/spec"
+        - "./whiteboard-server-docs/docs:/spec"
 volumes:
     whiteboard-demo-mongodb:
