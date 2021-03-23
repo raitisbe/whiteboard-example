@@ -3,10 +3,10 @@
 
 FROM node:10.16-alpine
 RUN apk add --no-cache git
-ADD https://gitlab.com/avinet2/map-whiteboard-server/-/archive/swagger-11/map-whiteboard-server-swagger-11.tar.gz /srv/
+ADD https://gitlab.com/avinet2/map-whiteboard-server/-/archive/swagger-12/map-whiteboard-server-swagger-12.tar.gz /srv/
 WORKDIR /srv/
-RUN tar xvzf map-whiteboard-server-swagger-11.tar.gz
-RUN mv /srv/map-whiteboard-server-swagger-11 /srv/map-whiteboard-server
+RUN tar xvzf map-whiteboard-server-swagger-12.tar.gz
+RUN mv /srv/map-whiteboard-server-swagger-12 /srv/map-whiteboard-server
 WORKDIR /srv/map-whiteboard-server
 RUN mkdir npm 
 RUN npm i
