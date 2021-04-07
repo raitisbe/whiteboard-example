@@ -26,6 +26,8 @@ services:
             - DB_SERVER=whiteboard-demo-db
         links:
             - whiteboard-demo-db
+        ports:
+           - 3101:3101
         volumes:
             - "./whiteboard-images:/srv/map-whiteboard-server/public/images/"
 
