@@ -5,7 +5,9 @@ FROM node:10.16-alpine
 RUN apk add --no-cache git
 RUN mkdir /srv/map-whiteboard-server
 WORKDIR /srv/map-whiteboard-server
+COPY whiteboard-server-dist/dist /srv/map-whiteboard-server
 RUN mkdir npm 
 RUN npm i
-ENTRYPOINT npm run start
-COPY whiteboard-server-dist/dist /srv/map-whiteboard-server
+ENTRYPOINT node app.js
+#ENTRYPOINT ["tail"]
+#CMD ["-f","/dev/null"]
